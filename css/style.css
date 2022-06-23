@@ -1,0 +1,207 @@
+/* Configuración de la raíz */
+:root{
+    background-color: #fff;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 15px;
+    --verydarkmagenta:hsl(300, 43%, 22%);
+    --softpink:hsl(333, 80%, 67%);
+    --darkmagenta:hsl(303, 10%, 53%);
+    --lightmagenta:hsl(300, 24%, 96%);
+    --white:hsl(0, 0%, 100%)
+}
+
+/* Reseteo de estilos */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing:border-box;
+}
+
+/* Inicio de estilos */
+/* - Mobile: 375px*/
+body{
+    position: relative;
+}
+
+.container{
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.main{
+    display: grid;
+    gap: 3rem 0;
+    padding: 6rem 0;
+}
+
+/* Seccion Head */
+.head{
+    text-align: center;
+}
+    .head__title{
+        color: var(--verydarkmagenta);
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    .head__paragraph{
+        color: var(--darkmagenta);
+        font-size: 1.22rem;
+        line-height: 1.3em;
+    }
+
+/* Sección Stars */
+.stars{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+    .stars__box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        background-color: var(--lightmagenta);
+        border-radius: 0.5rem;
+    }
+        .stars__icon{
+            background: url(../images/icon-star.svg) repeat-x;
+            height: 16px;
+            width: 110px;
+        }
+        
+        .stars__paragraph{
+            font-weight: 700;
+            color: var(--verydarkmagenta);
+        }
+
+/* Sección Cards */
+.cards{
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem 1.5rem;
+}
+    .cards__box{
+        background-color: var(--verydarkmagenta);
+        padding: 2rem;
+        border-radius: 0.5rem;
+    }
+        .card__title{
+            display: flex;
+            align-items: center;
+            gap: 1.6rem;
+            padding-bottom: 1rem;
+        }
+                .card__picture{
+                    border-radius: 50%;
+                    height: 3rem;
+                    width: 3rem;
+                }
+            .title__picture{
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                color: var(--white);
+                font-weight: 500;
+            }
+                .title__picture--subtitle{
+                    color: var(--softpink);
+                }
+
+        .card__description{
+            color:var(--white);
+        }
+            .text__description{
+                text-align:start;
+                font-weight: 400;
+                line-height: 1.7rem;
+            }
+
+.wave--top{
+    background: url(../images/bg-pattern-top-mobile.svg) no-repeat left;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 232px;
+}
+.wave--bottom{
+    background: url(../images/bg-pattern-bottom-mobile.svg) no-repeat right;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 503px;
+}
+
+/********** Media query Desktop 1440px **********/
+@media (min-width:376px) {
+    .wave--top{
+        background: url(../images/bg-pattern-top-desktop.svg) no-repeat top;
+        height: 362px;
+    }
+    .wave--bottom{
+        background: url(../images/bg-pattern-bottom-desktop.svg) no-repeat bottom;
+        height: 673px;
+    }
+}
+@media (min-width:1440px){
+
+    body{
+        height: 100vh;
+    }
+
+    .container{
+        max-width: 80%;
+    }
+
+    .main{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "head stars"
+            "cards cards";
+    }
+    
+        /* Seccion Head */
+        .head{
+            width: 80%;
+            grid-area: head;
+            text-align: left;
+        }
+            .head__title{
+                font-size: 3.5rem;
+            }
+
+        /* SeccionStars */
+        .stars{
+            width: 90%;
+            grid-area: stars;
+            justify-self: end;
+        }
+            .stars__box{
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-end;
+                padding: 1.5rem 2rem;
+            }
+                .stars__box--top{align-self: flex-start;}
+                .stars__box--middle{align-self: center;}
+                .stars__box--bottom{align-self: flex-end;}
+        
+        /* Seccion Cards */
+        .cards{
+            grid-area: cards;
+            flex-direction: row;
+        }
+            .cards__box--left{align-self: flex-start;}
+            .cards__box--middle{align-self: center;}
+            .cards__box--right{align-self: flex-end;}
+
+}
